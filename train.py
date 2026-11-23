@@ -176,4 +176,31 @@ print("\nBest CV F1-score:")
 print(round(best_cv_f1,4))
 
 
-#
+#STEP 9 Evaluate on unseen test data
+
+ y_pred=best_model.predict(X_test)
+
+print("\n"+"="60)
+print("FINAL MODEL EVALUATION")
+print("="*60)
+
+print("Accuracy:",accuracy_score(y_test,y_pred))
+
+print("F1 Score:",f1_score(y_test,y_pred))
+
+print("\nClassification Report:")
+print(
+classification_report(
+ y_test,
+ y_pred,
+  target_names=data.target_names
+  )
+ )
+ print("\nConfusion Matrix:")
+ print(confusion_matrix(y_test, y_pred))
+
+ #STEP 10:Save the model
+ joblib.dump(best-model,"best_model.joblib")
+
+ print("\nBest modedl saved successfully!")
+ print("Model:",best_model_name)
