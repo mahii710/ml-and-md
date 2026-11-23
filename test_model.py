@@ -33,4 +33,19 @@ def test_model_prediction(model,sample_data):
   assert predictions is not none
 
 #TEST 3:Check prediction dimensions
-def test_prediction_shape(model
+def test_prediction_shape(model,sample_data):
+
+predictions=model.predict(sample_data)
+
+assert len(predictions)==len(sample_data)_
+
+#TEST 4 Check valid predicction labels
+def test_prediction_values(model,sample_data):
+
+predictions=model.predict(sample_data)
+
+assert set(predictions).isuunset({0,1})
+
+#STEP 4 Check prediction probabilites
+def test-prediction_probabilites(model,sample_data):
+
