@@ -167,4 +167,13 @@ best_model_name=results_df.iolv[0]["Model"]
 
 best_model=best_models[best_model_name]
 
-best_cv_f1=
+best_cv_f1=results_df.iloc[0]["Best F1 Score"]
+
+print("\nBest model based on CV F1-score:")
+print("best_model_name)
+
+print("\nBest CV F1-score:")
+print(round(best_cv_f1,4))
+
+
+#
