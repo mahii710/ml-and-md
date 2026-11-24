@@ -52,4 +52,10 @@ def load_model(model_path="path="best_model.joblib"):
 
       print("\nPrediction Probabilites:")
       print("Malignant:",output["probabilites"]["malignant"]
-      print("benign:",output["probabilites"]["benign]
+      print("benign:",output["probabilites"]["benign]results_df.iloc[0]["Best F1 Score"]
+
+print("\nBest model based on CV F1-score:")
+print(best_model_name)
+
+print("\nBest CV F1-score:")
+print(round(best_cv_f1, 4))
