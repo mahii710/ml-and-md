@@ -1,61 +1,66 @@
 #predict.py
 
-import.joblib
-import pandas as pd 
+import joblib
+import pandas as pd
+
 from sklearn.datasets import load_breast_cancer
-#step 1:Load the saved model
-def load_model(model_path="path="best_model.joblib"):
- model=joblib.load(model_path)
- return model
- #step 2: Create a reusable prediction function
- def make_prediction(model,input-data):
 
- prediction = model.predict(input_data)
 
- probabilites = model.predict_proba(input_data)
+# STEP 1: Load the saved model
+def load_model(model_path="best_model.joblib"):
+    model = joblib.load(model_path)
+    return model
 
- result = "Maligant" if prediction[0]==0else "benign"
- return{
-   "prediction":result,
-   "probabilites":{
-    "malignant":probabilites[0][0]'
-    "benign":probabilites[0][1]
+
+# STEP 2: Create a reusable prediction function
+def make_prediction(model, input_data):
+
+    prediction = model.predict(input_data)
+
+    probabilities = model.predict_proba(input_data)
+
+    result = "Malignant" if prediction[0] == 0 else "Benign"
+
+    return {
+        "prediction": result,
+        "probabilities": {
+            "malignant": probabilities[0][0],
+            "benign": probabilities[0][1]
+        }
     }
-    }
 
-    #step 3:Run a sample prediction when executed directly
-    if__name__=="main__":
 
-    model=load_brest_cancer()
+# STEP 3: Run a sample prediction when executed directly
+if __name__ == "__main__":
 
-    feature_names=data.feature_names
+    model = load_model()
 
-    sample_input=dict(zip(feature_names,data.data[0]))
+    data = load_breast_cancer()
 
-    #Modify a few values for demonstration
-    sample_input["mean radius"]=15.0
-    sample_input["mean texture"]=18.0
-    sample_input["mean perimeter"]=100.0
+    feature_names = data.feature_names
 
-    input_df=pd.DataFrame(
-      [sample_input],
-      columns=feature_names
-      )
+    sample_input = dict(zip(feature_names, data.data[0]))
 
-      output= make_prediction(model,input_df)
+    # Modify a few values for demonstration
+    sample_input["mean radius"] = 15.0
+    sample_input["mean texture"] = 18.0
+    sample_input["mean perimeter"] = 100.0
 
-      print("Model loaded successfully!")
-      print("\nPrediction:",output["prediction"])
+    input_df = pd.DataFrame(
+        [sample_input],
+        columns=feature_names
+    )
 
-      print("Model loaded successfully!")
-      print("\nPrediction:",output["prediction])
+    output = make_prediction(model, input_df)
 
-      print("\nPrediction Probabilites:")
-      print("Malignant:",output["probabilites"]["malignant"]
-      print("benign:",output["probabilites"]["benign]results_df.iloc[0]["Best F1 Score"]
+    print("Model loaded successfully!")
+    print("\nPrediction:", output["prediction"])
 
-print("\nBest model based on CV F1-score:")
-print(best_model_name)
+    print("\nPrediction Probabilities:")
+    print("Malignant:", output["probabilities"]["malignant"])
+    print("Benign:", output["probabilities"]["benign"])
 
-print("\nBest CV F1-score:")
-print(round(best_cv_f1, 4))
+
+
+
+
